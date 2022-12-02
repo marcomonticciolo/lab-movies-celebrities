@@ -1,0 +1,22 @@
+
+<form action="/movies/{{foundMovie._id}}/edit" method="post">
+
+<h1>hi </h1>
+
+
+<input value="{{foundMovie.title}}">title: {{title}}</input>
+<input value="{{foundMovie.genre}}">genre: {{genre}}</input>
+<input value="{{foundMovie.plot}}">plot: {{plot}}</input>
+
+
+<select name="cast">
+    {{#each foundCelebArray}}
+<option value="{{_id}}">{{name}}</option>
+<option>{{occupation}}</option>
+<option>{{catchPhrase}}</option>
+{{/each}}
+</select>
+
+
+
+</form>

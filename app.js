@@ -13,6 +13,9 @@ const express = require('express');
 // https://www.npmjs.com/package/hbs
 const hbs = require('hbs');
 
+
+// const celebritiesRouter = require()
+
 const app = express();
 
 // ℹ️ This function is getting exported from the config folder. It runs most middlewares
@@ -25,10 +28,18 @@ const capitalized = string => string[0].toUpperCase() + string.slice(1).toLowerC
 app.locals.title = `${capitalized(projectName)}- Generated with Ironlauncher`;
 
 // 👇 Start handling routes here
-const index = require('./routes/index');
-app.use('/', index);
+const celebritiesRouter = require('./routes/celebrities.routes')
+const moviesRouter = require('./routes/movies.routes')
+const indexRouter = require('./routes/index');
+app.use('/', indexRouter);
+app.use('/celebrities', celebritiesRouter)
+
+app.use('/movies', moviesRouter )
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require('./error-handling')(app);
 
 module.exports = app;
+ 
+
+
